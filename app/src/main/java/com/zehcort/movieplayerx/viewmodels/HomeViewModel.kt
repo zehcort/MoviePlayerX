@@ -28,6 +28,7 @@ class HomeViewModel @Inject constructor(
                     )
 
                     is Resource.Success -> _state.value = state.value.copy(
+                        isLoading = false,
                         movieCategories = result.data!!
                     )
                 }
