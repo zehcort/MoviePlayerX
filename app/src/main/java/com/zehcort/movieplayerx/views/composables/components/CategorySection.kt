@@ -24,7 +24,8 @@ import com.zehcort.domain.models.MovieCategory
 @Composable
 fun CategorySection(
     category: MovieCategory,
-    onDetail: (movie: Movie) -> Unit
+    onDetail: (movie: Movie) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val pagerState = rememberPagerState {
         category.videos.size
@@ -32,7 +33,7 @@ fun CategorySection(
 
     val localContext = LocalContext.current
 
-    Column(modifier = Modifier.fillMaxWidth()) {
+    Column(modifier = modifier.fillMaxWidth()) {
         Text(
             modifier = Modifier.padding(bottom = 8.dp),
             text = category.name,

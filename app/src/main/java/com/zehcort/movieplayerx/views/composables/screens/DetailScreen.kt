@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.zehcort.movieplayerx.viewmodels.MoviesViewModel
+import com.zehcort.movieplayerx.views.composables.components.VideoPlayer
 
 @Composable
 fun DetailScreen(
@@ -26,6 +27,13 @@ fun DetailScreen(
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
+            VideoPlayer(
+                contentUrl = movie.sources[0],
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 8.dp)
+            )
+
             Text(
                 modifier = Modifier.padding(bottom = 8.dp),
                 text = movie.title,

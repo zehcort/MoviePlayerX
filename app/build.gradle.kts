@@ -76,6 +76,8 @@ dependencies {
 
     implementation("androidx.navigation:navigation-compose:2.7.6")
 
+    implementation("com.google.android.exoplayer:exoplayer:2.19.1")
+
     implementation(project(":domain"))
     implementation(project(":data"))
 }
