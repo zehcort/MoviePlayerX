@@ -35,4 +35,10 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
+
+    fun resetMovieCategoriesState() {
+        _state.value = state.value.copy(
+            movieCategories = listOf()
+        )
+    }
 }

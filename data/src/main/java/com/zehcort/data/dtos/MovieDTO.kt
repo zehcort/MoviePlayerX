@@ -13,10 +13,10 @@ fun MovieCategoryEntity.toDomain(): MovieCategoryDomain = MovieCategoryDomain(
 private fun List<MovieEntity>.toDomain(): List<MovieDomain> {
     return this.map {
         MovieDomain(
-            title = it.title,
-            subtitle = it.subtitle,
-            description = it.description,
-            sources = it.sources,
+            title = it.title ?: "",
+            subtitle = it.subtitle ?: "",
+            description = it.description ?: "",
+            sources = it.sources ?: listOf(),
             thumb = it.thumb
         )
     }
