@@ -1,6 +1,6 @@
 package com.zehcort.domain.usecases
 
-import com.zehcort.domain.companions.Resource
+import com.zehcort.domain.utils.Resource
 import com.zehcort.domain.models.MovieCategory
 import com.zehcort.domain.repositories.MovieCategoryRepository
 import kotlinx.coroutines.flow.Flow

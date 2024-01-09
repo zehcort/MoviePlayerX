@@ -1,6 +1,7 @@
 package com.zehcort.movieplayerx.views.composables.components
 
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -16,11 +17,15 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import coil.size.Scale
+import com.zehcort.domain.models.Movie
 import com.zehcort.domain.models.MovieCategory
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun CategorySection(category: MovieCategory) {
+fun CategorySection(
+    category: MovieCategory,
+    onDetail: (movie: Movie) -> Unit
+) {
     val pagerState = rememberPagerState {
         category.videos.size
     }
@@ -39,7 +44,9 @@ fun CategorySection(category: MovieCategory) {
             pageSize = PageSize.Fixed(200.dp),
             pageSpacing = 16.dp
         ) { page ->
-            Column {
+            Column(
+                modifier = Modifier.clickable { onDetail(category.videos[page]) }
+            ) {
                 AsyncImage(
                     modifier = Modifier.fillMaxWidth(),
                     model = ImageRequest.Builder(localContext).data(category.videos[page].thumb)

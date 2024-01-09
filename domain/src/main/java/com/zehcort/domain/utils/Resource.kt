@@ -1,4 +1,4 @@
-package com.zehcort.domain.companions
+package com.zehcort.domain.utils
 
 sealed class Resource<T>(
     val data: T? = null,

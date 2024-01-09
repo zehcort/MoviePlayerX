@@ -4,17 +4,19 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.zehcort.movieplayerx.viewmodels.HomeViewModel
+import com.zehcort.domain.models.Movie
+import com.zehcort.movieplayerx.viewmodels.MoviesViewModel
 import com.zehcort.movieplayerx.views.composables.components.CategorySection
 import com.zehcort.movieplayerx.views.composables.components.LoadingIndicator
 
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: MoviesViewModel = hiltViewModel(),
+    onDetail: (movie: Movie) -> Unit
 ) {
     val state = viewModel.state.value
 
@@ -26,15 +28,17 @@ fun HomeScreen(
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            CategorySection(category = state.movieCategories[0])
+            CategorySection(
+                category = state.movieCategories[0],
+                onDetail = { movie ->
+                    viewModel.setSelectedMovie(movie)
+                    onDetail(movie)
+                }
+            )
         }
     }
 
-    DisposableEffect(key1 = Unit, effect = {
+    LaunchedEffect(Unit) {
         viewModel.fetchMovieCategories()
-
-        onDispose {
-            viewModel.resetMovieCategoriesState()
-        }
-    })
+    }
 }
