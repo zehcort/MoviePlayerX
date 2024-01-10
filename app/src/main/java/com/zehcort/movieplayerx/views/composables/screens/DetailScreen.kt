@@ -25,7 +25,7 @@ fun DetailScreen(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 16.dp)
+                .padding(bottom = 16.dp)
         ) {
             VideoPlayer(
                 contentUrl = movie.sources[0],
