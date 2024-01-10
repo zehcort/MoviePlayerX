@@ -25,27 +25,28 @@ fun DetailScreen(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(vertical = 16.dp)
         ) {
             VideoPlayer(
                 contentUrl = movie.sources[0],
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 8.dp)
             )
 
             Text(
-                modifier = Modifier.padding(bottom = 8.dp),
+                modifier = Modifier
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
                 text = movie.title,
                 fontWeight = FontWeight.Bold
             )
 
             Text(
-                modifier = Modifier.padding(bottom = 8.dp),
+                modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
                 text = movie.subtitle,
                 fontWeight = FontWeight.SemiBold
             )
             Text(
+                modifier = Modifier.padding(horizontal = 16.dp),
                 text = movie.description,
                 fontWeight = FontWeight.Medium
             )
