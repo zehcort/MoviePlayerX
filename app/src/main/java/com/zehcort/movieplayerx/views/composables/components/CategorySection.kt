@@ -10,6 +10,7 @@ import androidx.compose.foundation.pager.PageSize
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -43,7 +44,8 @@ fun CategorySection(
         HorizontalPager(
             state = pagerState,
             pageSize = PageSize.Fixed(200.dp),
-            pageSpacing = 16.dp
+            pageSpacing = 16.dp,
+            verticalAlignment = Alignment.Top
         ) { page ->
             Column(
                 modifier = Modifier.clickable { onDetail(category.videos[page]) }
