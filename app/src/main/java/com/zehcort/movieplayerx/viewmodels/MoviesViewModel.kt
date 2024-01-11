@@ -4,9 +4,9 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zehcort.domain.utils.Resource
 import com.zehcort.domain.models.Movie
 import com.zehcort.domain.usecases.GetMovieCategories
+import com.zehcort.domain.utils.Resource
 import com.zehcort.movieplayerx.states.MoviesState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -40,12 +40,6 @@ class MoviesViewModel @Inject constructor(
     fun setSelectedMovie(movie: Movie) {
         _state.value = state.value.copy(
             selectedMovie = movie
-        )
-    }
-
-    fun clearSelectedMovie() {
-        _state.value = state.value.copy(
-            selectedMovie = null
         )
     }
 }
